@@ -36,7 +36,7 @@ public protocol IContainer: AnyObject {
     func unregisterAll()
 
     /// Извлекает зависимость из контейнера. Каждый раз будет возвращаться один и тот же экземпляр объекта
-    func singleton<T>() -> T
+    func resolve<T>() -> T
 }
 
 final class Container {
@@ -74,7 +74,7 @@ extension Container: IContainer {
         }
     }
 
-    func singleton<T>() -> T {
+    func resolve<T>() -> T {
         let key = ObjectIdentifier(T.self)
         if let cached: T = cachedInstance(forKey: key) {
             return cached

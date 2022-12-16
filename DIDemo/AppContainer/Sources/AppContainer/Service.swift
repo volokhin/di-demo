@@ -14,7 +14,7 @@ import Foundation
             if let instance = instance as? T {
                 return instance
             }
-            let resolved: T = Container.shared.singleton()
+            let resolved: T = Container.shared.resolve()
             instance = resolved as AnyObject
             return resolved
         }
